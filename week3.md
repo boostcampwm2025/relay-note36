@@ -300,3 +300,208 @@ README.md 내용:
 > 적어도 **주 1회**는 실천해봐요!
 > 
 
+# 1조 퀘스트 선택
+
+## 📅 J101 선택 - 1. ...
+
+### 📌 선택한 이유
+
+-
+
+### 📒 기록
+
+<details>
+
+<summary><strong>2025. 08. 04. (월)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 05. (화)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 06. (수)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 07. (목)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+## 📅 J194 선택 - 1. ...
+
+### 📌 선택한 이유
+
+-
+
+### 📒 기록
+
+<details>
+
+<summary><strong>2025. 08. 04. (월)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 05. (화)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 06. (수)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 07. (목)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+## 📅 J255 선택 - 1. ...
+
+### 📌 선택한 이유
+
+-
+
+### 📒 기록
+
+<details>
+
+<summary><strong>2025. 08. 04. (월)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 05. (화)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 06. (수)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 07. (목)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+## 📅 K017 선택 - 1. ...
+
+### 📌 선택한 이유
+
+-
+
+### 📒 기록
+
+<details>
+
+<summary><strong>2025. 08. 04. (월)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 05. (화)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 06. (수)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 07. (목)</strong></summary>
+
+```
+...
+```
+
+</details>
+
+## 🔍 회의 결론
+
+- ...
+
+- ### 느낀 점
+
+  - ...
+
+- ### 인사이트
+
+  - ...
