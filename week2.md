@@ -245,7 +245,7 @@ Week 1의 미션들은 확실히 **성장을 도와주는 좋은 기회**였어�
 
 <img width="739" height="599" alt="image" src="https://github.com/user-attachments/assets/b466db7a-20b3-42d3-8c46-109ec597ddae" />
 
-<img width="739" height="599" alt="image" src="https://github.com/user-attachments/assets/5ff7a455-6de5-4df4-9351-a5d5a4e8116e" />
+<img width="727" height="410" alt="image" src="https://github.com/user-attachments/assets/c42b3dd5-0608-40e6-8411-3b8600c9f727" />
 
 <img width="608" height="731" alt="image" src="https://github.com/user-attachments/assets/fabbc2b4-bc84-4c75-bf80-1707985b65e5" />
 
