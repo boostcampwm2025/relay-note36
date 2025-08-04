@@ -409,7 +409,35 @@ README.md 내용:
 <summary><strong>2025. 08. 04. (월)</strong></summary>
 
 ```
-...
+1. 상(上) 난이도 – HNSW 인덱싱
+
+HNSW(Hierarchical Navigable Small World) 그래프 기반 인덱싱은 데이터 포인트를 여러 레벨의 그래프로 계층화해서 저장합니다.
+
+최상위 레벨에서는 전체 데이터의 대표 샘플만 연결해 놓아 탐색 범위를 좁힙니다.
+
+하위 레벨로 내려오면서 점점 더 촘촘한 근접 이웃(edge)을 유지하고, 각 노드는 최대 M개의 연결만 갖도록 제한합니다.
+
+이 구조 덕분에 평균 탐색 복잡도는 O(log N)이 보장되며, 메모리 복잡도는 O(N × M)입니다.
+
+단, HNSW는 오직 L2 거리(Euclidean distance) 측정만 지원하며, Cosine similarity나 Manhattan distance는 적용할 수 없습니다.
+
+2. 중(中) 난이도 – IVF + PQ 압축
+
+IVF(Inverted File)와 PQ(Product Quantization)를 결합한 방식은 대규모 벡터 검색에서 자주 사용됩니다.
+
+먼저 IVF 단계에서 벡터를 K개의 클러스터(centroid)로 나누어 각 벡터를 근접한 클러스터 버킷에 할당합니다.
+
+이후 각 클러스터 안의 벡터들은 PQ를 통해 여러 개의 sub-vector로 분할된 뒤, 각 subspace마다 사전(codebook)에 의해 양자화됩니다.
+
+이렇게 생성된 코드(code)만 저장해 두면, 검색 시에는 코드만으로도 원본 벡터를 완벽하게 복원하여 정확한 거리 계산이 가능합니다.
+
+3. 하(下) 난이도 – Cosine 유사도 계산
+
+벡터 유사도 측정 시 Cosine similarity는 매우 흔히 쓰이는데요:
+
+Cosine similarity 자체가 벡터의 크기(scale)에 독립적이기 때문에, 벡터를 미리 L2 정규화(normalize)하지 않아도 됩니다.
+
+실제로 VectorDB들은 원본 임베딩을 그대로 저장한 뒤, 단순히 dot product만 계산해도 Cosine similarity와 완전히 동일한 순위 결과를 얻습니다.
 ```
 
 </details>
