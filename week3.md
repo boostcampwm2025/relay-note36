@@ -406,7 +406,7 @@ README.md 내용:
 
 <details>
 
-<summary><strong>2025. 08. 04. (월)</strong></summary>
+<summary><strong>2025. 08. 04. (월) ~ 2025. 08. 07. (목)</strong></summary>
 
 ```
 1. 상(上) 난이도 – HNSW 인덱싱
@@ -442,35 +442,13 @@ Cosine similarity 자체가 벡터의 크기(scale)에 독립적이기 때문에
 
 </details>
 
-<details>
+#### 느낀 점
 
-<summary><strong>2025. 08. 05. (화)</strong></summary>
+- ...
 
-```
-...
-```
+#### 인사이트
 
-</details>
-
-<details>
-
-<summary><strong>2025. 08. 06. (수)</strong></summary>
-
-```
-...
-```
-
-</details>
-
-<details>
-
-<summary><strong>2025. 08. 07. (목)</strong></summary>
-
-```
-...
-```
-
-</details>
+- ...
 
 ## 📅 K017 선택 - 1️⃣ AI에게 도전! 과연 이길 수 있을까? 🤺
 
