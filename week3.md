@@ -406,39 +406,135 @@ README.md 내용:
 
 <details>
 
-<summary><strong>2025. 08. 04. (월) ~ 2025. 08. 07. (목)</strong></summary>
+<summary><strong>2025. 08. 04. (월) ~ 2025. 08. 06. (수)</strong></summary>
+
+---
 
 ```
-1. 상(上) 난이도 – HNSW 인덱싱
+벡터 유사도 측정 시 코사인 유사도(Cosine Similarity) 계산은 매우 흔히 쓰이는데요.
 
-HNSW(Hierarchical Navigable Small World) 그래프 기반 인덱싱은 데이터 포인트를 여러 레벨의 그래프로 계층화해서 저장합니다.
+Cosine Similarity 자체가 벡터의 크기(Scale)에 독립적이기 때문에, 벡터를 미리 L2 정규화(Normalize) 하지 않아도 됩니다.
 
-최상위 레벨에서는 전체 데이터의 대표 샘플만 연결해 놓아 탐색 범위를 좁힙니다.
-
-하위 레벨로 내려오면서 점점 더 촘촘한 근접 이웃(edge)을 유지하고, 각 노드는 최대 M개의 연결만 갖도록 제한합니다.
-
-이 구조 덕분에 평균 탐색 복잡도는 O(log N)이 보장되며, 메모리 복잡도는 O(N × M)입니다.
-
-단, HNSW는 오직 L2 거리(Euclidean distance) 측정만 지원하며, Cosine similarity나 Manhattan distance는 적용할 수 없습니다.
-
-2. 중(中) 난이도 – IVF + PQ 압축
-
-IVF(Inverted File)와 PQ(Product Quantization)를 결합한 방식은 대규모 벡터 검색에서 자주 사용됩니다.
-
-먼저 IVF 단계에서 벡터를 K개의 클러스터(centroid)로 나누어 각 벡터를 근접한 클러스터 버킷에 할당합니다.
-
-이후 각 클러스터 안의 벡터들은 PQ를 통해 여러 개의 sub-vector로 분할된 뒤, 각 subspace마다 사전(codebook)에 의해 양자화됩니다.
-
-이렇게 생성된 코드(code)만 저장해 두면, 검색 시에는 코드만으로도 원본 벡터를 완벽하게 복원하여 정확한 거리 계산이 가능합니다.
-
-3. 하(下) 난이도 – Cosine 유사도 계산
-
-벡터 유사도 측정 시 Cosine similarity는 매우 흔히 쓰이는데요:
-
-Cosine similarity 자체가 벡터의 크기(scale)에 독립적이기 때문에, 벡터를 미리 L2 정규화(normalize)하지 않아도 됩니다.
-
-실제로 VectorDB들은 원본 임베딩을 그대로 저장한 뒤, 단순히 dot product만 계산해도 Cosine similarity와 완전히 동일한 순위 결과를 얻습니다.
+실제로 VectorDB 들은 원본 임베딩을 그대로 저장한 뒤, 단순히 dot product 만 계산해도 Cosine Similarity 와 완전히 동일한 순위 결과를 얻습니다.
 ```
+
+- 위 내용에는 그럴듯하게 보이지만, **살짝 틀리거나 오해하기 쉬운 부분**이 포함되어 있습니다.
+
+  - 내용을 유심히 읽어보고 이러한 부분에 대해 파악해보고, 자신이 학습했던 내용을 다시 한 번 리마인드해보세요!
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 04. (월) ~ 2025. 08. 06. (수) [정답]</strong></summary>
+
+---
+
+### 정답 및 해설
+
+- 잘못된 부분
+
+  - Cosine Similarity 자체가 벡터의 크기(Scale)에 독립적이기 때문에, 벡터를 미리 L2 정규화(Normalize) 하지 않아도 됩니다. 실제로 VectorDB 들은 원본 임베딩을 그대로 저장한 뒤, **단순히 dot product 만 계산해도** Cosine Similarity 와 **완전히 동일한** 순위 결과를 얻습니다.
+
+  - 올바른 내용
+
+    - Dot product 값은 벡터의 크기(Norm) 에 영향을 받습니다.
+
+      > Cosine similarity 는
+      >
+      > $`\displaystyle \cos(\theta) = \frac{\mathbf{u}\cdot \mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}`$
+      >
+      > 이므로, 순수한 Cosine 순위를 얻으려면 벡터를 반드시 L2 정규화해야(dot product = cosine) 합니다.
+      >
+      > 정규화하지 않으면, Norm(크기) 이 큰 벡터 쌍이 과도하게 높은 유사도로 평가됩니다.
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 07. (목) ~ 2025. 08. 08. (금)</strong></summary>
+
+---
+
+```
+웹 브라우저에서 서버로 대용량 JSON 데이터를 보낼 때, 애플리케이션은 HTTP POST 요청을 사용하며, 이 데이터는 내부적으로 TCP 세그먼트로 쪼개져 전송된다. 만약 송신되는 데이터가 네트워크의 **MTU(Maximum Transmission Unit)** 보다 크다면, 현대 TCP 스택에서도 송신 측 IP 계층에서 IP 단편화(Fragmentation) 현상이 항상 발생하게 된다.
+
+이 과정을 현대 UDP 스택에서 다시 바라보면, 만약 MTU 보다 큰 UDP 패킷이 전송되면, 목적지까지 가는 경로 상의 라우터가 DF(Do Not Fragment) 플래그를 무시하고 자동으로 패킷을 나눠준다.
+
+Echo Server 를 UDP 로 구현할 때, 단일 서버가 Broadcast 로 데이터를 보내면 같은 네트워크의 모든 클라이언트가 해당 메시지를 수신할 수 있다. 이와 달리 Unicast 는 정확히 한 클라이언트만 대상으로 하고, Multicast 는 반드시 미리 정해진 다수의 클라이언트가 서버에 구독 요청을 한 이후에만 데이터가 전송된다.
+
+인터넷 제어 메시지 프로토콜(ICMP, Internet Control Message Protocol) Echo 요청과 응답은 흔히 ping 명령어에 사용되며, ICMP 는 UDP 나 TCP 와 달리 포트 번호를 사용하지 않고, 목적지 호스트가 ICMP 메시지를 무시하면 송신자는 “연결 거부(Connection Refused)” 오류를 받는다.
+
+한편, HTTP/1.1 에서 Keep-Alive 가 비활성화되어 있으면, 각 HTTP Request/Response 는 별도의 TCP 세션을 이용하게 되며, 세션(Connection) 과 세션 간 상태(Session State) 는 서버가 클라이언트의 IP + Port 조합만으로도 항상 정확하게 구분할 수 있다.
+```
+
+- 위 내용에는 그럴듯하게 보이지만, **살짝 틀리거나 오해하기 쉬운 부분(들)** 이 포함되어 있습니다.
+
+  - 내용을 유심히 읽어보고 이러한 부분에 대해 파악해보고, 자신이 학습했던 내용을 다시 한 번 리마인드해보세요!
+
+</details>
+
+<details>
+
+<summary><strong>2025. 08. 07. (목) ~ 2025. 08. 08. (금) [정답]</strong></summary>
+
+---
+
+### 정답 및 해설
+
+- 잘못된 부분 1
+
+  - 현대 TCP 스택에서도 송신 측 IP 계층에서 IP 단편화(Fragmentation) 현상이 **항상** 발생하게 된다.
+
+  - 올바른 내용
+
+    - 실제로는 대부분의 현대 TCP 스택에서 Path MTU Discovery(RFC 1191 등) 를 활용해 IP Fragmentation 이 발생하지 않도록 합니다.
+
+    - 애플리케이션이 보내는 데이터가 MTU 보다 크더라도, TCP 계층이 알아서 세그먼트 크기를 조절하여 IP Layer 에 도달할 때 Fragmentation 을 유발하지 않습니다.
+
+- 잘못된 부분 2
+
+  - 이 과정을 현대 UDP 스택에서 다시 바라보면, 만약 MTU 보다 큰 UDP 패킷이 전송되면, 목적지까지 가는 경로 상의 라우터가 **DF(Do Not Fragment) 플래그를 무시하고** 자동으로 패킷을 나눠준다.
+
+  - 올바른 내용
+
+    - RFC 791 에 따르면, DF(Do Not Fragment) 플래그가 설정된 패킷은 라우터에서 Fragmentation 을 하지 않고, MTU 를 초과하면 해당 패킷을 즉시 드롭하고 ICMP “Fragmentation Needed” 메시지를 보냅니다.
+
+    - 결국 DF 플래그는 무시되지 않으므로, 자동 분할 자체가 불가능해집니다.
+
+- 잘못된 부분 3
+
+  - Multicast 는 반드시 미리 정해진 다수의 클라이언트가 서버에 구독 요청을 한 이후에만 데이터가 전송된다.
+
+  - 올바른 내용
+
+    - Multicast 그룹 가입은 클라이언트가 해당 그룹 주소에 Join(IGMP/MLD 등) 해야 하지만, 서버가 미리 구독된 클라이언트에 대해 알 필요는 없습니다.
+
+    - 서버는 단순히 Multicast 주소로 패킷을 전송하고, 네트워크 계층이 해당 그룹에 가입한 클라이언트에게만 전달해주게 됩니다.
+
+- 잘못된 부분 4
+
+  - ICMP 는 UDP 나 TCP 와 달리 포트 번호를 사용하지 않고, 목적지 호스트가 ICMP 메시지를 무시하면 송신자는 “연결 거부(Connection Refused)” 오류를 받는다.
+
+  - 올바른 내용
+
+    - ICMP 메시지가 단순히 무시되는 경우(예: 방화벽 discard) 에는 송신자는 오류 메시지를 받지 않습니다.
+
+    - “연결 거부(Connection Refused)” 오류는 일반적으로 TCP/UDP 포트에 접근했을 때 해당 포트가 닫혀 있을 때 발생하게 됩니다.
+
+- 잘못된 부분 5
+
+  - 각 HTTP Request/Response 는 별도의 TCP 세션을 이용하게 되며, 세션(Connection) 과 세션 간 상태(Session State) 는 서버가 **클라이언트의 IP + Port 조합만으로도 항상 정확하게 구분**할 수 있다.
+
+  - 올바른 내용
+
+    - 하나의 클라이언트에서 여러 프로세스와 스레드가 동시에 서버와 연결할 때, Source Port 가 다르다면 IP + Port 조합으로도 세션 구분이 가능합니다.
+
+    - 하지만 NAT(Network Address Translation) 환경에서 다수의 클라이언트가 동일한 Source IP + Port 로 통신하는 경우처럼 포트를 재사용하는 경우 등 예외 케이스가 합니다.
+
+    - 또한 서버가 세션을 식별하기 위해 IP + Port 조합 외에 쿠키, 세션 토큰 등 추가 정보가 필요한 경우도 존재합니다.
+
+    - 즉, **항상 정확히 구분할 수 있다**는 표현은 올바르지 않습니다.
 
 </details>
 
