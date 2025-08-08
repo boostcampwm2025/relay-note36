@@ -719,58 +719,6 @@ Echo Server 를 UDP 로 구현할 때, 단일 서버가 Broadcast 로 데이터�
 
 ### 📌 선택한 이유
 
-제 학습을 돌아보는 과정을 자주 갖는 편인데 퀴즈로 진행하는 것도 괜찮을 것 같다는 생각이 들어 선택했습니다.
-
-### 📒 기록
-
-<details>
-
-<summary><strong>2025. 08. 04. (월)</strong></summary>
-
-```
-...
-```
-
-</details>
-
-<details>
-
-<summary><strong>2025. 08. 05. (화)</strong></summary>
-
-```
-...
-```
-
-</details>
-
-<details>
-
-<summary><strong>2025. 08. 06. (수)</strong></summary>
-
-```
-...
-```
-
-</details>
-
-<details>
-
-<summary><strong>2025. 08. 07. (목)</strong></summary>
-
-```
-...
-```
-
-</details>
-
-## 🔍 회의 결론
-
-- ...
-
-- ### 느낀 점
-
-  - ...
-
-- ### 인사이트
+제 학습을 돌아보는 과정을 자주 갖는 편인데 퀴다
 
   - ...
